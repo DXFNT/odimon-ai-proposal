@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Automation — ODIMON × Dexfinity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Questrial&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #05024E;
+            --light-blue: #0065F7;
+            --white: #FFFFFF;
+            --light-bg: #F4F6FC;
+            --light-blue-10: rgba(0, 101, 247, 0.1);
+            --light-blue-20: rgba(0, 101, 247, 0.2);
+            --dark-blue-90: rgba(5, 2, 78, 0.9);
+            --dark-blue-70: rgba(5, 2, 78, 0.7);
+            --dark-blue-50: rgba(5, 2, 78, 0.5);
+            --text-secondary: #6B7094;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--dark-blue);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 60px solid rgba(0, 101, 247, 0.12);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -120px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(0, 101, 247, 0.08);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            max-width: 700px;
+        }
+
+        .hero h1 span {
+            color: var(--light-blue);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 560px;
+            margin-bottom: 48px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .hero-meta-item strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 1;
+            color: var(--white);
+        }
+
+        /* ── SECTION STYLES ── */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--light-blue);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        /* ── PROBLEM / SITUATION ── */
+        .situation { background: var(--white); }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: var(--light-bg);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--light-blue-10);
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--light-blue);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .problem-text {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #0a0670 100%);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            font-size: 17px;
+            line-height: 1.7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-text::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 30px solid rgba(0, 101, 247, 0.15);
+        }
+
+        .problem-text strong {
+            color: var(--light-blue);
+        }
+
+        /* ── SOLUTION ── */
+        .solution { background: var(--light-bg); }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .flow-step {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-blue);
+            font-size: 20px;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .flow-step:last-child::after { display: none; }
+
+        .flow-step-num {
+            width: 36px;
+            height: 36px;
+            background: var(--light-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .flow-step h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            line-height: 1.4;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .cap-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+
+        .cap-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── PHASES ── */
+        .phases { background: var(--white); }
+
+        .phase-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .phase-card {
+            border: 2px solid var(--light-bg);
+            border-radius: 20px;
+            padding: 36px 28px;
+            transition: border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card:hover { border-color: var(--light-blue-20); }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--light-blue-10);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .phase-card:hover::before { opacity: 1; }
+
+        .phase-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--light-blue);
+            margin-bottom: 8px;
+        }
+
+        .phase-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .phase-card ul {
+            list-style: none;
+        }
+
+        .phase-card li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .phase-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--light-blue-20);
+        }
+
+        /* ── TECH STACK ── */
+        .tech { background: var(--dark-blue); color: var(--white); }
+
+        .tech .section-label { color: rgba(0, 101, 247, 0.8); }
+        .tech .section-title { color: var(--white); }
+        .tech .section-desc { color: rgba(255,255,255,0.5); }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .tech-item-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--light-blue);
+            margin-bottom: 8px;
+        }
+
+        .tech-item-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* ── TIMELINE ── */
+        .timeline-section { background: var(--light-bg); }
+
+        .timeline {
+            display: flex;
+            gap: 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            right: 24px;
+            height: 3px;
+            background: var(--light-blue-20);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding-top: 56px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            border: 4px solid var(--light-bg);
+            z-index: 1;
+        }
+
+        .timeline-week {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--light-blue);
+            margin-bottom: 6px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--dark-blue);
+            padding: 0 8px;
+        }
+
+        /* ── PRICING ── */
+        .pricing { background: var(--white); }
+
+        .pricing-table {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--light-bg);
+            margin-bottom: 40px;
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 32px;
+            border-bottom: 1px solid var(--light-bg);
+            font-size: 15px;
+        }
+
+        .pricing-row:last-child { border-bottom: none; }
+
+        .pricing-row-label {
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+
+        .pricing-row-value {
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+
+        .pricing-total {
+            background: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .pricing-total .pricing-row-label {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .pricing-total .pricing-row-value {
+            color: var(--light-blue);
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .payment-item {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .payment-item-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .payment-item-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        /* ── BENEFITS / COMPARISON ── */
+        .benefits { background: var(--light-bg); }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 0;
+            align-items: stretch;
+            margin-bottom: 48px;
+        }
+
+        .compare-card {
+            border-radius: 20px;
+            padding: 40px 32px;
+        }
+
+        .compare-before {
+            background: var(--white);
+            border: 2px solid #e8e9f0;
+        }
+
+        .compare-after {
+            background: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .compare-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--light-blue);
+            font-weight: 700;
+        }
+
+        .compare-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .compare-before h3 { color: var(--text-secondary); }
+        .compare-after h3 { color: var(--light-blue); }
+
+        .compare-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(128,128,128,0.1);
+            font-size: 14px;
+        }
+
+        .compare-row:last-child { border-bottom: none; }
+
+        .compare-label { font-weight: 400; opacity: 0.7; }
+        .compare-value { font-weight: 600; }
+        .compare-after .compare-value { color: var(--light-blue); }
+
+        .savings-banner {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #0050cc 100%);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .savings-banner::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .savings-text {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .savings-number {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .savings-unit {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* ── REQUIREMENTS ── */
+        .requirements { background: var(--white); }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .req-box {
+            background: var(--light-bg);
+            border-radius: 20px;
+            padding: 36px;
+        }
+
+        .req-box h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .req-box li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            list-style: none;
+        }
+
+        .req-box li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--light-blue);
+        }
+
+        .op-cost-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 14px;
+        }
+
+        .op-cost-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            color: var(--dark-blue);
+            padding-top: 16px;
+            margin-top: 4px;
+            border-top: 2px solid var(--light-blue-20);
+        }
+
+        /* ── CTA ── */
+        .cta {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            border: 80px solid rgba(0, 101, 247, 0.06);
+            pointer-events: none;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta p {
+            font-size: 17px;
+            font-weight: 300;
+            opacity: 0.6;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--white);
+            padding: 16px 48px;
+            border-radius: 100px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 101, 247, 0.4);
+        }
+
+        .cta-contact {
+            margin-top: 24px;
+            font-size: 14px;
+            opacity: 0.4;
+            position: relative;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--dark-blue);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 32px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .footer-brand {
+            font-family: 'Questrial', Arial, sans-serif;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 0 80px; }
+            .hero h1 { font-size: 28px; }
+            .container { padding: 0 24px; }
+            section { padding: 60px 0; }
+            .stat-grid, .phase-cards, .tech-grid, .payment-grid { grid-template-columns: 1fr; }
+            .flow-steps { grid-template-columns: repeat(2, 1fr); }
+            .flow-step::after { display: none; }
+            .comparison { grid-template-columns: 1fr; }
+            .compare-arrow { transform: rotate(90deg); padding: 16px 0; }
+            .req-grid { grid-template-columns: 1fr; }
+            .capabilities-grid { grid-template-columns: 1fr; }
+            .savings-banner { flex-direction: column; text-align: center; gap: 16px; }
+        }
+
+        @media print {
+            .hero { padding: 40px 0 60px; }
+            section { padding: 40px 0; }
+            .cta-button { border: 2px solid var(--light-blue); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<header class="hero">
+    <div class="container">
+        <div class="hero-badge">Cenova Ponuka</div>
+        <h1>AI Email Automation<br>pre <span>ODIMON</span></h1>
+        <p class="hero-subtitle">Automatizacia zakaznickej komunikacie pomocou AI agenta napojeného na Money S5.</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <strong>Datum</strong>
+                15. april 2026
+            </div>
+            <div class="hero-meta-item">
+                <strong>Platnost</strong>
+                30 dni
+            </div>
+            <div class="hero-meta-item">
+                <strong>Pripravil</strong>
+                Matej Astary, Partner
+            </div>
+            <div class="hero-meta-item">
+                <strong>Divízia</strong>
+                Dexfinity s.r.o. — CreAI
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ════════ SITUATION ════════ -->
+<section class="situation">
+    <div class="container">
+        <div class="section-label">Sucasny stav</div>
+        <h2 class="section-title">Problem, ktory riesime</h2>
+        <p class="section-desc">Operatori manualne spracuvavaju desiatky emailov denne. 80 % z nich su opakujuce sa dotazy.</p>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-number">30–100</div>
+                <div class="stat-label">emailov denne</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">~5 min</div>
+                <div class="stat-label">na spracovanie 1 emailu</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">80 %</div>
+                <div class="stat-label">opakujucich sa dotazov</div>
+            </div>
+        </div>
+
+        <div class="problem-text">
+            Operatori travia <strong>5,5 hodiny denne</strong> odpovedaním na rutinne otazky o stave objednavok, dostupnosti produktov, dodavkach, fakturach a reklamaciach. <strong>AI agent dokaze prevziat 80 % komunikacie</strong> — operatori sa sustredí na zlozite pripady.
+        </div>
+    </div>
+</section>
+
+<!-- ════════ SOLUTION ════════ -->
+<section class="solution">
+    <div class="container">
+        <div class="section-label">Navrhovane riesenie</div>
+        <h2 class="section-title">AI Email Agent</h2>
+        <p class="section-desc">Inteligentny agent, ktory automaticky klasifikuje, vyhlada data a odpoveda v brand voice vasej firmy.</p>
+
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="flow-step-num">1</div>
+                <h4>Email pride<br>(IMAP monitoring)</h4>
+            </div>
+            <div class="flow-step">
+                <div class="flow-step-num">2</div>
+                <h4>AI klasifikuje<br>poziadavku</h4>
+            </div>
+            <div class="flow-step">
+                <div class="flow-step-num">3</div>
+                <h4>Data z Money S5<br>cez REST API</h4>
+            </div>
+            <div class="flow-step">
+                <div class="flow-step-num">4</div>
+                <h4>Personalizovana<br>odpoved</h4>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top: 16px;">Co vsetko AI zvladne</div>
+        <div class="capabilities-grid" style="margin-top: 20px;">
+            <div class="cap-item"><div class="cap-dot"></div>Stav objednavok a sledovanie zasielok</div>
+            <div class="cap-item"><div class="cap-dot"></div>Dostupnost produktov a terminy naskladnenia</div>
+            <div class="cap-item"><div class="cap-dot"></div>Informacie o dodavke a platbe</div>
+            <div class="cap-item"><div class="cap-dot"></div>Stav faktury a potvrdenie uhrady</div>
+            <div class="cap-item"><div class="cap-dot"></div>Zakladne otazky o produktoch (knowledge base)</div>
+            <div class="cap-item"><div class="cap-dot"></div>Eskalacia zlozitych pripadov s kontextom</div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ PHASES ════════ -->
+<section class="phases">
+    <div class="container">
+        <div class="section-label">Implementacia</div>
+        <h2 class="section-title">Fazy projektu</h2>
+        <p class="section-desc">Od analyzy po nasadenie za 5 tyzdnov.</p>
+
+        <div class="phase-cards">
+            <div class="phase-card">
+                <div class="phase-tag">Faza 1 · Tyzdne 1–2</div>
+                <h3>Analyza &amp; Priprava</h3>
+                <ul>
+                    <li>Audit a kategorizacia emailov</li>
+                    <li>Mapovanie dat v Money S5</li>
+                    <li>Priprava knowledge base</li>
+                    <li>Konfiguracia IMAP/SMTP</li>
+                    <li>Nastavenie REST API pristupov</li>
+                </ul>
+            </div>
+            <div class="phase-card">
+                <div class="phase-tag">Faza 2 · Tyzdne 2–4</div>
+                <h3>Vyvoj AI Agenta</h3>
+                <ul>
+                    <li>Modul klasifikacie intentov</li>
+                    <li>Prompt engineering (brand voice)</li>
+                    <li>Integracia Money S5 API</li>
+                    <li>Draft &amp; approval workflow</li>
+                    <li>Monitorovaci dashboard</li>
+                </ul>
+            </div>
+            <div class="phase-card">
+                <div class="phase-tag">Faza 3 · Tyzdne 4–5</div>
+                <h3>Nasadenie &amp; Optimalizacia</h3>
+                <ul>
+                    <li>Testovanie na realnych emailoch</li>
+                    <li>Fine-tuning na zaklade feedbacku</li>
+                    <li>Postupny prechod na plnu automatizaciu</li>
+                    <li>Konfiguracia eskalacnych pravidiel</li>
+                    <li>Skolenie timu a handoff</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ TECH STACK ════════ -->
+<section class="tech">
+    <div class="container">
+        <div class="section-label">Technicke riesenie</div>
+        <h2 class="section-title">Technologicky stack</h2>
+        <p class="section-desc">Overene technologie pre spolahlive a skalovatelne riesenie.</p>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-item-label">AI Model</div>
+                <div class="tech-item-value">GPT-4o / Claude</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Data Integracia</div>
+                <div class="tech-item-value">Money S5 REST API</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Email Protokoly</div>
+                <div class="tech-item-value">IMAP / SMTP</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Knowledge Storage</div>
+                <div class="tech-item-value">Vector Database</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Backend</div>
+                <div class="tech-item-value">Python</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Monitoring</div>
+                <div class="tech-item-value">Performance Dashboard</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ TIMELINE ════════ -->
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-label">Casovy plan</div>
+        <h2 class="section-title">5 tyzdnov od startu po nasadenie</h2>
+        <p class="section-desc"></p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-week">Tyzden 1</div>
+                <div class="timeline-desc">Kickoff &amp; analyza emailov</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-week">Tyzden 2</div>
+                <div class="timeline-desc">Setup infrastruktury</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-week">Tyzden 3</div>
+                <div class="timeline-desc">Vyvoj AI agenta</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-week">Tyzden 4</div>
+                <div class="timeline-desc">Testovanie v draft mode</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-week">Tyzden 5</div>
+                <div class="timeline-desc">Plne nasadenie &amp; handoff</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ PRICING ════════ -->
+<section class="pricing">
+    <div class="container">
+        <div class="section-label">Cena</div>
+        <h2 class="section-title">Cenova kalkulacia</h2>
+        <p class="section-desc">Transparentne nacenenie podla jednotlivych faz projektu.</p>
+
+        <div class="pricing-table">
+            <div class="pricing-row">
+                <span class="pricing-row-label">Analyza &amp; kategorizacia emailov</span>
+                <span class="pricing-row-value">350 &euro;</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-row-label">Setup infrastruktury</span>
+                <span class="pricing-row-value">500 &euro;</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-row-label">Vyvoj AI agenta &amp; prompt engineering</span>
+                <span class="pricing-row-value">800 &euro;</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-row-label">Integracia Money S5 REST API</span>
+                <span class="pricing-row-value">700 &euro;</span>
+            </div>
+            <div class="pricing-row">
+                <span class="pricing-row-label">Testovanie, fine-tuning &amp; nasadenie</span>
+                <span class="pricing-row-value">450 &euro;</span>
+            </div>
+            <div class="pricing-row pricing-total">
+                <span class="pricing-row-label">Celkom bez DPH</span>
+                <span class="pricing-row-value">2 800 &euro;</span>
+            </div>
+        </div>
+
+        <div class="payment-grid">
+            <div class="payment-item">
+                <div class="payment-item-label">Zalohova faktura</div>
+                <div class="payment-item-value">1 400 &euro;</div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">50 % pri podpise</div>
+            </div>
+            <div class="payment-item">
+                <div class="payment-item-label">Doplatok</div>
+                <div class="payment-item-value">1 400 &euro;</div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">50 % pri odovzdani</div>
+            </div>
+            <div class="payment-item">
+                <div class="payment-item-label">Splatnost faktury</div>
+                <div class="payment-item-value">14 dni</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ BENEFITS ════════ -->
+<section class="benefits">
+    <div class="container">
+        <div class="section-label">Prinosy</div>
+        <h2 class="section-title">Pred vs. Po implementacii</h2>
+        <p class="section-desc"></p>
+
+        <div class="comparison">
+            <div class="compare-card compare-before">
+                <h3>Teraz</h3>
+                <div class="compare-row">
+                    <span class="compare-label">Manualne spracovanie</span>
+                    <span class="compare-value">100 %</span>
+                </div>
+                <div class="compare-row">
+                    <span class="compare-label">Cas operatora denne</span>
+                    <span class="compare-value">~5,5 hod</span>
+                </div>
+                <div class="compare-row">
+                    <span class="compare-label">Cas odpovede</span>
+                    <span class="compare-value">2–6 hodin</span>
+                </div>
+                <div class="compare-row">
+                    <span class="compare-label">Pocet operatorov</span>
+                    <span class="compare-value">2–3</span>
+                </div>
+            </div>
+            <div class="compare-arrow">→</div>
+            <div class="compare-card compare-after">
+                <h3>S AI Agentom</h3>
+                <div class="compare-row">
+                    <span class="compare-label">Manualne spracovanie</span>
+                    <span class="compare-value">~20 %</span>
+                </div>
+                <div class="compare-row">
+                    <span class="compare-label">Cas operatora denne</span>
+                    <span class="compare-value">~1 hod</span>
+                </div>
+                <div class="compare-row">
+                    <span class="compare-label">Cas odpovede</span>
+                    <span class="compare-value">pod 5 min</span>
+                </div>
+                <div class="compare-row">
+                    <span class="compare-label">Pocet operatorov</span>
+                    <span class="compare-value">1 (monitoring)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="savings-banner">
+            <div class="savings-text">Mesacna uspora casu operatorov</div>
+            <div>
+                <div class="savings-number">~90 hod</div>
+                <div class="savings-unit">mesacne</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ REQUIREMENTS ════════ -->
+<section class="requirements">
+    <div class="container">
+        <div class="section-label">Poziadavky</div>
+        <h2 class="section-title">Co potrebujeme od vas</h2>
+        <p class="section-desc"></p>
+
+        <div class="req-grid">
+            <div class="req-box">
+                <h3>Podklady na zacatie</h3>
+                <ul>
+                    <li>Pristup k emailovemu uctu (IMAP/SMTP)</li>
+                    <li>Money S5 API credentials (Client ID/Secret)</li>
+                    <li>Materialy pre knowledge base (FAQ, podmienky, postupy)</li>
+                    <li>Urceny operator na feedback pocas testovania</li>
+                </ul>
+            </div>
+            <div class="req-box">
+                <h3>Mesacne prevadzkove naklady</h3>
+                <div class="op-cost-row">
+                    <span>AI model (API usage)</span>
+                    <span>30–80 &euro;</span>
+                </div>
+                <div class="op-cost-row">
+                    <span>Hosting infrastruktury</span>
+                    <span>~20 &euro;</span>
+                </div>
+                <div class="op-cost-row">
+                    <span><strong>Celkom / mesiac</strong></span>
+                    <span><strong>50–100 &euro;</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ CTA ════════ -->
+<section class="cta">
+    <div class="container">
+        <h2>Posunte zakaznicky servis<br>na dalsiu uroven</h2>
+        <p>Sme pripraveni prebrat technicke detaily a zodpovedat vsetky otazky.</p>
+        <a href="mailto:matejastary@gmail.com" class="cta-button">Dohodnut stretnutie</a>
+        <div class="cta-contact">matejastary@gmail.com</div>
+    </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-brand">dexfinity <span style="color: var(--light-blue);">·</span> go beyond</div>
+        <div class="footer-text">&copy; 2026 Dexfinity s.r.o. Vsetky prava vyhradene.</div>
+    </div>
+</footer>
+
+</body>
+</html>
