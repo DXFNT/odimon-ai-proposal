@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Email Automation — ODIMON × Dexfinity</title>
+    <title>Cenová ponuka — AI automatizácia emailovej komunikácie | Dexfinity × ODIMON</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Questrial&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,9 +13,6 @@
             --light-bg: #F4F6FC;
             --light-blue-10: rgba(0, 101, 247, 0.1);
             --light-blue-20: rgba(0, 101, 247, 0.2);
-            --dark-blue-90: rgba(5, 2, 78, 0.9);
-            --dark-blue-70: rgba(5, 2, 78, 0.7);
-            --dark-blue-50: rgba(5, 2, 78, 0.5);
             --text-secondary: #6B7094;
         }
 
@@ -70,37 +67,47 @@
             z-index: 1;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: var(--light-blue);
-            color: var(--white);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
+        .hero-brand {
+            font-family: 'Questrial', Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            padding: 6px 16px;
-            border-radius: 100px;
-            margin-bottom: 32px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 24px;
+        }
+
+        .hero-brand span {
+            color: var(--light-blue);
+            margin: 0 8px;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 44px;
             font-weight: 700;
             line-height: 1.15;
-            margin-bottom: 16px;
-            max-width: 700px;
+            margin-bottom: 20px;
+            max-width: 780px;
         }
 
-        .hero h1 span {
+        .hero h1 .accent {
             color: var(--light-blue);
         }
 
         .hero-subtitle {
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 500;
+            opacity: 0.92;
+            max-width: 640px;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            font-size: 15px;
             font-weight: 300;
-            opacity: 0.8;
-            max-width: 560px;
+            opacity: 0.7;
+            max-width: 640px;
             margin-bottom: 48px;
+            line-height: 1.7;
         }
 
         .hero-meta {
@@ -110,8 +117,10 @@
         }
 
         .hero-meta-item {
-            font-size: 13px;
-            opacity: 0.6;
+            font-size: 12px;
+            opacity: 0.55;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hero-meta-item strong {
@@ -120,6 +129,9 @@
             font-weight: 600;
             opacity: 1;
             color: var(--white);
+            text-transform: none;
+            letter-spacing: 0;
+            margin-top: 2px;
         }
 
         /* ── SECTION STYLES ── */
@@ -127,33 +139,45 @@
             padding: 80px 0;
         }
 
-        .section-label {
+        .section-num {
             display: inline-block;
-            font-size: 11px;
+            font-family: 'Questrial', Arial, sans-serif;
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 3px;
             color: var(--light-blue);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .section-title {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             color: var(--dark-blue);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             line-height: 1.2;
+            max-width: 720px;
         }
 
-        .section-desc {
+        .section-lead {
             font-size: 16px;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 680px;
+            margin-bottom: 48px;
+            line-height: 1.75;
+        }
+
+        /* ── SITUATION ── */
+        .situation { background: var(--white); }
+
+        .situation-body {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 760px;
             margin-bottom: 48px;
         }
 
-        /* ── PROBLEM / SITUATION ── */
-        .situation { background: var(--white); }
+        .situation-body p + p { margin-top: 18px; }
 
         .stat-grid {
             display: grid;
@@ -196,7 +220,7 @@
             font-weight: 500;
         }
 
-        .problem-text {
+        .callout {
             background: linear-gradient(135deg, var(--dark-blue) 0%, #0a0670 100%);
             color: var(--white);
             border-radius: 20px;
@@ -207,7 +231,7 @@
             overflow: hidden;
         }
 
-        .problem-text::after {
+        .callout::after {
             content: '';
             position: absolute;
             bottom: -40px;
@@ -218,9 +242,7 @@
             border: 30px solid rgba(0, 101, 247, 0.15);
         }
 
-        .problem-text strong {
-            color: var(--light-blue);
-        }
+        .callout strong { color: var(--light-blue); }
 
         /* ── SOLUTION ── */
         .solution { background: var(--light-bg); }
@@ -229,7 +251,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            margin-bottom: 48px;
+            margin: 40px 0 48px;
         }
 
         .flow-step {
@@ -254,25 +276,30 @@
 
         .flow-step:last-child::after { display: none; }
 
-        .flow-step-num {
-            width: 36px;
-            height: 36px;
-            background: var(--light-blue);
-            color: var(--white);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 14px;
+        .flow-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         .flow-step h4 {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             color: var(--dark-blue);
+            margin-bottom: 6px;
+        }
+
+        .flow-step p {
+            font-size: 12px;
+            color: var(--text-secondary);
             line-height: 1.4;
+        }
+
+        .capabilities-intro {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 760px;
+            margin-bottom: 24px;
         }
 
         .capabilities-grid {
@@ -346,10 +373,11 @@
         }
 
         .phase-card h3 {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 700;
             color: var(--dark-blue);
             margin-bottom: 20px;
+            line-height: 1.3;
         }
 
         .phase-card ul {
@@ -359,16 +387,17 @@
         .phase-card li {
             font-size: 13px;
             color: var(--text-secondary);
-            padding: 6px 0;
+            padding: 8px 0;
             padding-left: 20px;
             position: relative;
+            line-height: 1.55;
         }
 
         .phase-card li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 13px;
+            top: 15px;
             width: 8px;
             height: 8px;
             border-radius: 50%;
@@ -378,9 +407,8 @@
         /* ── TECH STACK ── */
         .tech { background: var(--dark-blue); color: var(--white); }
 
-        .tech .section-label { color: rgba(0, 101, 247, 0.8); }
+        .tech .section-num { color: rgba(0, 101, 247, 0.9); }
         .tech .section-title { color: var(--white); }
-        .tech .section-desc { color: rgba(255,255,255,0.5); }
 
         .tech-grid {
             display: grid;
@@ -395,75 +423,66 @@
             padding: 28px;
         }
 
-        .tech-item-label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--light-blue);
+        .tech-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .tech-item-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
             margin-bottom: 8px;
         }
 
-        .tech-item-value {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--white);
+        .tech-item-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.55;
         }
 
         /* ── TIMELINE ── */
         .timeline-section { background: var(--light-bg); }
 
         .timeline {
-            display: flex;
-            gap: 0;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            right: 24px;
-            height: 3px;
-            background: var(--light-blue-20);
-            border-radius: 2px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 32px;
         }
 
         .timeline-item {
-            flex: 1;
-            text-align: center;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px 18px;
             position: relative;
-            padding-top: 56px;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 24px;
-            background: var(--light-blue);
-            border-radius: 50%;
-            border: 4px solid var(--light-bg);
-            z-index: 1;
         }
 
         .timeline-week {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--white);
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            color: var(--light-blue);
-            margin-bottom: 6px;
+            padding: 4px 10px;
+            border-radius: 100px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+            line-height: 1.35;
         }
 
         .timeline-desc {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--dark-blue);
-            padding: 0 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         /* ── PRICING ── */
@@ -480,33 +499,48 @@
         .pricing-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 20px 32px;
+            align-items: flex-start;
+            padding: 22px 32px;
             border-bottom: 1px solid var(--light-bg);
-            font-size: 15px;
+            gap: 24px;
         }
 
         .pricing-row:last-child { border-bottom: none; }
 
+        .pricing-row-main {
+            flex: 1;
+        }
+
         .pricing-row-label {
             color: var(--dark-blue);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .pricing-row-desc {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
         }
 
         .pricing-row-value {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark-blue);
+            font-size: 17px;
+            white-space: nowrap;
         }
 
         .pricing-total {
             background: var(--dark-blue);
-            color: var(--white);
+            align-items: center;
         }
 
         .pricing-total .pricing-row-label {
             color: var(--white);
             font-weight: 700;
-            font-size: 17px;
+            font-size: 18px;
+            margin: 0;
         }
 
         .pricing-total .pricing-row-value {
@@ -515,36 +549,17 @@
             font-weight: 700;
         }
 
-        .payment-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .payment-item {
-            background: var(--light-bg);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-        }
-
-        .payment-item-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-
-        .payment-item-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark-blue);
-        }
-
-        /* ── BENEFITS / COMPARISON ── */
+        /* ── BENEFITS ── */
         .benefits { background: var(--light-bg); }
+
+        .benefits-intro {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 720px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
 
         .comparison {
             display: grid;
@@ -579,11 +594,11 @@
         }
 
         .compare-card h3 {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .compare-before h3 { color: var(--text-secondary); }
@@ -595,12 +610,13 @@
             padding: 12px 0;
             border-bottom: 1px solid rgba(128,128,128,0.1);
             font-size: 14px;
+            gap: 12px;
         }
 
         .compare-row:last-child { border-bottom: none; }
 
         .compare-label { font-weight: 400; opacity: 0.7; }
-        .compare-value { font-weight: 600; }
+        .compare-value { font-weight: 700; text-align: right; }
         .compare-after .compare-value { color: var(--light-blue); }
 
         .savings-banner {
@@ -611,6 +627,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 24px;
             position: relative;
             overflow: hidden;
         }
@@ -627,20 +644,28 @@
         }
 
         .savings-text {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 500;
+            max-width: 480px;
+            line-height: 1.55;
+            z-index: 1;
         }
+
+        .savings-text strong { font-weight: 700; }
 
         .savings-number {
             font-size: 42px;
             font-weight: 700;
             line-height: 1;
+            text-align: right;
+            z-index: 1;
         }
 
         .savings-unit {
             font-size: 14px;
             font-weight: 400;
-            opacity: 0.8;
+            opacity: 0.85;
+            margin-top: 4px;
         }
 
         /* ── REQUIREMENTS ── */
@@ -650,6 +675,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
+            margin-bottom: 32px;
         }
 
         .req-box {
@@ -662,45 +688,65 @@
             font-size: 16px;
             font-weight: 700;
             color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .req-box > p {
+            font-size: 13px;
+            color: var(--text-secondary);
             margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .req-box ul {
+            list-style: none;
         }
 
         .req-box li {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
-            padding: 8px 0;
+            padding: 10px 0;
             padding-left: 24px;
             position: relative;
-            list-style: none;
+            line-height: 1.6;
         }
 
         .req-box li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 14px;
+            top: 16px;
             width: 10px;
             height: 10px;
             border-radius: 50%;
             background: var(--light-blue);
         }
 
-        .op-cost-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-size: 14px;
+        .req-box li strong {
+            color: var(--dark-blue);
+            font-weight: 700;
         }
 
-        .op-cost-row:last-child {
-            border-bottom: none;
+        .payment-block {
+            background: var(--light-bg);
+            border-radius: 20px;
+            padding: 36px;
+        }
+
+        .payment-block h3 {
+            font-size: 16px;
             font-weight: 700;
             color: var(--dark-blue);
-            padding-top: 16px;
-            margin-top: 4px;
-            border-top: 2px solid var(--light-blue-20);
+            margin-bottom: 16px;
         }
+
+        .payment-block p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .payment-block strong { color: var(--dark-blue); font-weight: 600; }
 
         /* ── CTA ── */
         .cta {
@@ -726,18 +772,22 @@
         }
 
         .cta h2 {
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 700;
             margin-bottom: 16px;
             position: relative;
+            line-height: 1.2;
         }
 
         .cta p {
             font-size: 17px;
             font-weight: 300;
-            opacity: 0.6;
+            opacity: 0.75;
             margin-bottom: 40px;
             position: relative;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
@@ -759,13 +809,6 @@
             box-shadow: 0 8px 32px rgba(0, 101, 247, 0.4);
         }
 
-        .cta-contact {
-            margin-top: 24px;
-            font-size: 14px;
-            opacity: 0.4;
-            position: relative;
-        }
-
         /* ── FOOTER ── */
         .footer {
             background: var(--dark-blue);
@@ -774,38 +817,42 @@
             text-align: center;
         }
 
-        .footer-text {
-            font-size: 12px;
-            color: rgba(255,255,255,0.3);
-        }
-
         .footer-brand {
             font-family: 'Questrial', Arial, sans-serif;
             font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 8px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 6px;
+            letter-spacing: 2px;
         }
+
+        .footer-brand span { color: var(--light-blue); margin: 0 6px; }
+
+        .footer-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-text a { color: rgba(255,255,255,0.6); text-decoration: none; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .hero { padding: 60px 0 80px; }
-            .hero h1 { font-size: 28px; }
+            .hero h1 { font-size: 30px; }
             .container { padding: 0 24px; }
             section { padding: 60px 0; }
-            .stat-grid, .phase-cards, .tech-grid, .payment-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 26px; }
+            .stat-grid, .phase-cards, .tech-grid { grid-template-columns: 1fr; }
             .flow-steps { grid-template-columns: repeat(2, 1fr); }
             .flow-step::after { display: none; }
+            .timeline { grid-template-columns: 1fr; }
             .comparison { grid-template-columns: 1fr; }
             .compare-arrow { transform: rotate(90deg); padding: 16px 0; }
             .req-grid { grid-template-columns: 1fr; }
             .capabilities-grid { grid-template-columns: 1fr; }
-            .savings-banner { flex-direction: column; text-align: center; gap: 16px; }
-        }
-
-        @media print {
-            .hero { padding: 40px 0 60px; }
-            section { padding: 40px 0; }
-            .cta-button { border: 2px solid var(--light-blue); }
+            .savings-banner { flex-direction: column; text-align: center; }
+            .savings-number { text-align: center; }
+            .pricing-row { flex-direction: column; }
+            .pricing-total { flex-direction: row; }
         }
     </style>
 </head>
@@ -814,36 +861,41 @@
 <!-- ════════ HERO ════════ -->
 <header class="hero">
     <div class="container">
-        <div class="hero-badge">Cenova Ponuka</div>
-        <h1>AI Email Automation<br>pre <span>ODIMON</span></h1>
-        <p class="hero-subtitle">Automatizacia zakaznickej komunikacie pomocou AI agenta napojeného na Money S5.</p>
+        <div class="hero-brand">dexfinity <span>×</span> odimon</div>
+        <h1>Cenová ponuka — <span class="accent">AI automatizácia</span> emailovej komunikácie</h1>
+        <p class="hero-subtitle">Nasadenie AI agenta na spracovanie zákazníckych emailov s napojením na Money S5 API.</p>
+        <p class="hero-desc">Cieľ: znížiť manuálnu prácu operátorov na 20 %.</p>
         <div class="hero-meta">
             <div class="hero-meta-item">
-                <strong>Datum</strong>
-                15. april 2026
+                Dátum
+                <strong>15. apríla 2026</strong>
             </div>
             <div class="hero-meta-item">
-                <strong>Platnost</strong>
-                30 dni
+                Platnosť ponuky
+                <strong>30 dní</strong>
             </div>
             <div class="hero-meta-item">
-                <strong>Pripravil</strong>
-                Matej Astary, Partner
+                Pripravil
+                <strong>Matej Aštary, Partner</strong>
             </div>
             <div class="hero-meta-item">
-                <strong>Divízia</strong>
-                Dexfinity s.r.o. — CreAI
+                Oddelenie
+                <strong>CreAI · Dexfinity s.r.o.</strong>
             </div>
         </div>
     </div>
 </header>
 
-<!-- ════════ SITUATION ════════ -->
+<!-- ════════ SECTION 01 — SITUÁCIA ════════ -->
 <section class="situation">
     <div class="container">
-        <div class="section-label">Sucasny stav</div>
-        <h2 class="section-title">Problem, ktory riesime</h2>
-        <p class="section-desc">Operatori manualne spracuvavaju desiatky emailov denne. 80 % z nich su opakujuce sa dotazy.</p>
+        <div class="section-num">01 · VÝCHODISKOVÁ SITUÁCIA</div>
+        <h2 class="section-title">Čo dnes brzdí váš zákaznícky servis</h2>
+
+        <div class="situation-body">
+            <p>Vaši operátori denne manuálne spracúvajú desiatky emailov — od otázok na stav objednávky, cez dostupnosť produktov, až po reklamácie a vrátenia tovaru. Každý email vyžaduje otvorenie Money S5, dohľadanie údajov a ručné napísanie odpovede.</p>
+            <p>Tento proces je časovo náročný, repetitívny a náchylný na chyby. Operátori trávia väčšinu času rutinnými odpoveďami namiesto riešenia komplexných prípadov, kde je ich expertíza naozaj potrebná.</p>
+        </div>
 
         <div class="stat-grid">
             <div class="stat-card">
@@ -852,320 +904,320 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">~5 min</div>
-                <div class="stat-label">na spracovanie 1 emailu</div>
+                <div class="stat-label">priemerná doba odpovede</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">80 %</div>
-                <div class="stat-label">opakujucich sa dotazov</div>
+                <div class="stat-label">opakovateľných otázok</div>
             </div>
         </div>
 
-        <div class="problem-text">
-            Operatori travia <strong>5,5 hodiny denne</strong> odpovedaním na rutinne otazky o stave objednavok, dostupnosti produktov, dodavkach, fakturach a reklamaciach. <strong>AI agent dokaze prevziat 80 % komunikacie</strong> — operatori sa sustredí na zlozite pripady.
+        <div class="callout">
+            <strong>Naša ambícia:</strong> AI agent preberie 80 % emailovej komunikácie. Operátori sa budú venovať len zložitým prípadom — reklamáciám, špeciálnym požiadavkám a eskaláciám.
         </div>
     </div>
 </section>
 
-<!-- ════════ SOLUTION ════════ -->
+<!-- ════════ SECTION 02 — RIEŠENIE ════════ -->
 <section class="solution">
     <div class="container">
-        <div class="section-label">Navrhovane riesenie</div>
-        <h2 class="section-title">AI Email Agent</h2>
-        <p class="section-desc">Inteligentny agent, ktory automaticky klasifikuje, vyhlada data a odpoveda v brand voice vasej firmy.</p>
+        <div class="section-num">02 · NAVRHOVANÉ RIEŠENIE</div>
+        <h2 class="section-title">AI Email Agent pre ODIMON</h2>
+        <p class="section-lead">Nasadíme inteligentného AI agenta, ktorý bude automaticky čítať prichádzajúce emaily, rozpoznávať typ požiadavky, ťahať relevantné dáta z Money S5 cez REST API a odpovedať zákazníkom v tóne vašej značky.</p>
 
         <div class="flow-steps">
             <div class="flow-step">
-                <div class="flow-step-num">1</div>
-                <h4>Email pride<br>(IMAP monitoring)</h4>
+                <div class="flow-icon">📨</div>
+                <h4>Email príde</h4>
+                <p>IMAP monitoring schránky v reálnom čase</p>
             </div>
             <div class="flow-step">
-                <div class="flow-step-num">2</div>
-                <h4>AI klasifikuje<br>poziadavku</h4>
+                <div class="flow-icon">🧠</div>
+                <h4>AI klasifikuje</h4>
+                <p>Rozpozná typ požiadavky a intent zákazníka</p>
             </div>
             <div class="flow-step">
-                <div class="flow-step-num">3</div>
-                <h4>Data z Money S5<br>cez REST API</h4>
+                <div class="flow-icon">🔌</div>
+                <h4>Money S5 API</h4>
+                <p>Dotiahne objednávku, faktúru, stav skladu</p>
             </div>
             <div class="flow-step">
-                <div class="flow-step-num">4</div>
-                <h4>Personalizovana<br>odpoved</h4>
+                <div class="flow-icon">✉️</div>
+                <h4>Odpoveď</h4>
+                <p>AI odošle personalizovanú odpoveď</p>
             </div>
         </div>
 
-        <div class="section-label" style="margin-top: 16px;">Co vsetko AI zvladne</div>
-        <div class="capabilities-grid" style="margin-top: 20px;">
-            <div class="cap-item"><div class="cap-dot"></div>Stav objednavok a sledovanie zasielok</div>
-            <div class="cap-item"><div class="cap-dot"></div>Dostupnost produktov a terminy naskladnenia</div>
-            <div class="cap-item"><div class="cap-dot"></div>Informacie o dodavke a platbe</div>
-            <div class="cap-item"><div class="cap-dot"></div>Stav faktury a potvrdenie uhrady</div>
-            <div class="cap-item"><div class="cap-dot"></div>Zakladne otazky o produktoch (knowledge base)</div>
-            <div class="cap-item"><div class="cap-dot"></div>Eskalacia zlozitych pripadov s kontextom</div>
+        <h3 style="font-size:20px; font-weight:700; color:var(--dark-blue); margin-bottom:16px;">Čo AI agent dokáže riešiť automaticky</h3>
+        <p class="capabilities-intro">Na základe analýzy typických e-shopových požiadaviek agent zvládne:</p>
+
+        <div class="capabilities-grid">
+            <div class="cap-item"><div class="cap-dot"></div>Stav objednávky a tracking</div>
+            <div class="cap-item"><div class="cap-dot"></div>Dostupnosť produktov a termíny naskladnenia</div>
+            <div class="cap-item"><div class="cap-dot"></div>Informácie o doručení a platbe</div>
+            <div class="cap-item"><div class="cap-dot"></div>Stav faktúry a potvrdenie platby</div>
+            <div class="cap-item"><div class="cap-dot"></div>Základné otázky o produktoch (z knowledge base)</div>
+            <div class="cap-item"><div class="cap-dot"></div>Presmerovanie zložitých prípadov na operátora s kontextom</div>
         </div>
     </div>
 </section>
 
-<!-- ════════ PHASES ════════ -->
+<!-- ════════ SECTION 03 — FÁZY ════════ -->
 <section class="phases">
     <div class="container">
-        <div class="section-label">Implementacia</div>
-        <h2 class="section-title">Fazy projektu</h2>
-        <p class="section-desc">Od analyzy po nasadenie za 5 tyzdnov.</p>
+        <div class="section-num">03 · FÁZY IMPLEMENTÁCIE</div>
+        <h2 class="section-title">Od analýzy po plnú automatizáciu</h2>
 
         <div class="phase-cards">
             <div class="phase-card">
-                <div class="phase-tag">Faza 1 · Tyzdne 1–2</div>
-                <h3>Analyza &amp; Priprava</h3>
+                <div class="phase-tag">Fáza 1 · Týždeň 1–2</div>
+                <h3>Analýza &amp; príprava</h3>
                 <ul>
-                    <li>Audit a kategorizacia emailov</li>
-                    <li>Mapovanie dat v Money S5</li>
-                    <li>Priprava knowledge base</li>
-                    <li>Konfiguracia IMAP/SMTP</li>
-                    <li>Nastavenie REST API pristupov</li>
+                    <li>Audit emailovej schránky — kategorizácia typov požiadaviek a ich frekvencia</li>
+                    <li>Mapovanie dátových potrieb v Money S5 (objednávky, faktúry, sklad, zákazníci)</li>
+                    <li>Príprava knowledge base — FAQ, produktové info, firemné politiky (vrátenie, reklamácie)</li>
+                    <li>Setup IMAP/SMTP napojenia na emailovú schránku</li>
+                    <li>Konfigurácia Money S5 REST API (Client ID / Client Secret, endpointy)</li>
                 </ul>
             </div>
             <div class="phase-card">
-                <div class="phase-tag">Faza 2 · Tyzdne 2–4</div>
-                <h3>Vyvoj AI Agenta</h3>
+                <div class="phase-tag">Fáza 2 · Týždeň 2–4</div>
+                <h3>Vývoj AI agenta</h3>
                 <ul>
-                    <li>Modul klasifikacie intentov</li>
-                    <li>Prompt engineering (brand voice)</li>
-                    <li>Integracia Money S5 API</li>
-                    <li>Draft &amp; approval workflow</li>
-                    <li>Monitorovaci dashboard</li>
+                    <li>Vývoj klasifikačného modulu — rozpoznávanie intentu emailu (objednávka, reklamácia, produkt, iné)</li>
+                    <li>Prompt engineering — tón značky ODIMON, štruktúra odpovedí, edge case handling</li>
+                    <li>Integrácia s Money S5 REST API — real-time ťahanie dát o objednávkach, faktúrach a sklade</li>
+                    <li>Režim „draft &amp; approve" — AI pripraví odpoveď, operátor schváli jedným klikom</li>
+                    <li>Monitoring dashboard — prehľad spracovaných emailov, úspešnosť, eskalácie</li>
                 </ul>
             </div>
             <div class="phase-card">
-                <div class="phase-tag">Faza 3 · Tyzdne 4–5</div>
-                <h3>Nasadenie &amp; Optimalizacia</h3>
+                <div class="phase-tag">Fáza 3 · Týždeň 4–5</div>
+                <h3>Nasadenie &amp; optimalizácia</h3>
                 <ul>
-                    <li>Testovanie na realnych emailoch</li>
-                    <li>Fine-tuning na zaklade feedbacku</li>
-                    <li>Postupny prechod na plnu automatizaciu</li>
-                    <li>Konfiguracia eskalacnych pravidiel</li>
-                    <li>Skolenie timu a handoff</li>
+                    <li>Testovanie na reálnych emailoch v draft režime (operátori schvaľujú)</li>
+                    <li>Fine-tuning na základe spätnej väzby operátorov</li>
+                    <li>Postupný prechod na plnú automatizáciu (AI odpovedá priamo, operátor monitoruje)</li>
+                    <li>Nastavenie eskalačných pravidiel — kedy AI automaticky odovzdá operátorovi</li>
+                    <li>Odovzdanie + zaškolenie tímu na prácu s dashboardom a správu knowledge base</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ════════ TECH STACK ════════ -->
+<!-- ════════ SECTION 04 — TECH STACK ════════ -->
 <section class="tech">
     <div class="container">
-        <div class="section-label">Technicke riesenie</div>
-        <h2 class="section-title">Technologicky stack</h2>
-        <p class="section-desc">Overene technologie pre spolahlive a skalovatelne riesenie.</p>
+        <div class="section-num">04 · TECHNICKÝ STACK</div>
+        <h2 class="section-title">Nástroje a technológie</h2>
 
         <div class="tech-grid">
             <div class="tech-item">
-                <div class="tech-item-label">AI Model</div>
-                <div class="tech-item-value">GPT-4o / Claude</div>
+                <div class="tech-icon">🤖</div>
+                <div class="tech-item-name">AI Model (GPT-4o / Claude)</div>
+                <div class="tech-item-desc">Generovanie odpovedí, klasifikácia, reasoning</div>
             </div>
             <div class="tech-item">
-                <div class="tech-item-label">Data Integracia</div>
-                <div class="tech-item-value">Money S5 REST API</div>
+                <div class="tech-icon">💰</div>
+                <div class="tech-item-name">Money S5 REST API</div>
+                <div class="tech-item-desc">Objednávky, faktúry, sklad, zákazníci</div>
             </div>
             <div class="tech-item">
-                <div class="tech-item-label">Email Protokoly</div>
-                <div class="tech-item-value">IMAP / SMTP</div>
+                <div class="tech-icon">📧</div>
+                <div class="tech-item-name">IMAP / SMTP</div>
+                <div class="tech-item-desc">Príjem a odosielanie emailov</div>
             </div>
             <div class="tech-item">
-                <div class="tech-item-label">Knowledge Storage</div>
-                <div class="tech-item-value">Vector Database</div>
+                <div class="tech-icon">🗄️</div>
+                <div class="tech-item-name">Vector Database</div>
+                <div class="tech-item-desc">Knowledge base — FAQ, produkty, politiky</div>
             </div>
             <div class="tech-item">
-                <div class="tech-item-label">Backend</div>
-                <div class="tech-item-value">Python</div>
+                <div class="tech-icon">🐍</div>
+                <div class="tech-item-name">Python Backend</div>
+                <div class="tech-item-desc">Orchestrácia, API integrácie, logika</div>
             </div>
             <div class="tech-item">
-                <div class="tech-item-label">Monitoring</div>
-                <div class="tech-item-value">Performance Dashboard</div>
+                <div class="tech-icon">📊</div>
+                <div class="tech-item-name">Monitoring Dashboard</div>
+                <div class="tech-item-desc">Prehľad výkonu, eskalácie, štatistiky</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ════════ TIMELINE ════════ -->
+<!-- ════════ SECTION 05 — TIMELINE ════════ -->
 <section class="timeline-section">
     <div class="container">
-        <div class="section-label">Casovy plan</div>
-        <h2 class="section-title">5 tyzdnov od startu po nasadenie</h2>
-        <p class="section-desc"></p>
+        <div class="section-num">05 · ČASOVÝ HARMONOGRAM</div>
+        <h2 class="section-title">5 týždňov od štartu po nasadenie</h2>
 
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-week">Tyzden 1</div>
-                <div class="timeline-desc">Kickoff &amp; analyza emailov</div>
+                <span class="timeline-week">Týždeň 1</span>
+                <div class="timeline-title">Kick-off &amp; analýza emailov</div>
+                <div class="timeline-desc">Audit emailovej schránky, kategorizácia typov požiadaviek, mapovanie Money S5 dátových potrieb</div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-week">Tyzden 2</div>
-                <div class="timeline-desc">Setup infrastruktury</div>
+                <span class="timeline-week">Týždeň 2</span>
+                <div class="timeline-title">Setup infraštruktúry</div>
+                <div class="timeline-desc">IMAP/SMTP napojenie, Money S5 REST API konfigurácia, príprava knowledge base z webu a FAQ</div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-week">Tyzden 3</div>
-                <div class="timeline-desc">Vyvoj AI agenta</div>
+                <span class="timeline-week">Týždeň 3</span>
+                <div class="timeline-title">Vývoj AI agenta</div>
+                <div class="timeline-desc">Klasifikácia emailov, prompt engineering, integrácia s Money S5, generovanie odpovedí</div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-week">Tyzden 4</div>
-                <div class="timeline-desc">Testovanie v draft mode</div>
+                <span class="timeline-week">Týždeň 4</span>
+                <div class="timeline-title">Testovanie v draft režime</div>
+                <div class="timeline-desc">AI generuje odpovede, operátori schvaľujú. Fine-tuning na základe reálnej spätnej väzby</div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-week">Tyzden 5</div>
-                <div class="timeline-desc">Plne nasadenie &amp; handoff</div>
+                <span class="timeline-week">Týždeň 5</span>
+                <div class="timeline-title">Nasadenie &amp; odovzdanie</div>
+                <div class="timeline-desc">Prechod na plnú automatizáciu, nastavenie eskalácií, zaškolenie tímu, odovzdanie dokumentácie</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ════════ PRICING ════════ -->
+<!-- ════════ SECTION 06 — PRICING ════════ -->
 <section class="pricing">
     <div class="container">
-        <div class="section-label">Cena</div>
-        <h2 class="section-title">Cenova kalkulacia</h2>
-        <p class="section-desc">Transparentne nacenenie podla jednotlivych faz projektu.</p>
+        <div class="section-num">06 · CENOVÁ KALKULÁCIA</div>
+        <h2 class="section-title">Investícia do projektu</h2>
 
         <div class="pricing-table">
             <div class="pricing-row">
-                <span class="pricing-row-label">Analyza &amp; kategorizacia emailov</span>
-                <span class="pricing-row-value">350 &euro;</span>
+                <div class="pricing-row-main">
+                    <div class="pricing-row-label">Analýza emailov &amp; kategorizácia</div>
+                    <div class="pricing-row-desc">Audit schránky, mapovanie typov požiadaviek, definícia pravidiel pre AI</div>
+                </div>
+                <div class="pricing-row-value">350 €</div>
             </div>
             <div class="pricing-row">
-                <span class="pricing-row-label">Setup infrastruktury</span>
-                <span class="pricing-row-value">500 &euro;</span>
+                <div class="pricing-row-main">
+                    <div class="pricing-row-label">Setup infraštruktúry</div>
+                    <div class="pricing-row-desc">IMAP/SMTP napojenie, AI pipeline, vector DB pre knowledge base</div>
+                </div>
+                <div class="pricing-row-value">500 €</div>
             </div>
             <div class="pricing-row">
-                <span class="pricing-row-label">Vyvoj AI agenta &amp; prompt engineering</span>
-                <span class="pricing-row-value">800 &euro;</span>
+                <div class="pricing-row-main">
+                    <div class="pricing-row-label">Vývoj AI agenta &amp; prompt engineering</div>
+                    <div class="pricing-row-desc">Klasifikácia intentov, generovanie odpovedí, tón značky, edge case handling</div>
+                </div>
+                <div class="pricing-row-value">800 €</div>
             </div>
             <div class="pricing-row">
-                <span class="pricing-row-label">Integracia Money S5 REST API</span>
-                <span class="pricing-row-value">700 &euro;</span>
+                <div class="pricing-row-main">
+                    <div class="pricing-row-label">Integrácia s Money S5 REST API</div>
+                    <div class="pricing-row-desc">Napojenie na objednávky, faktúry, stav skladu, zákaznícke dáta cez REST API</div>
+                </div>
+                <div class="pricing-row-value">700 €</div>
             </div>
             <div class="pricing-row">
-                <span class="pricing-row-label">Testovanie, fine-tuning &amp; nasadenie</span>
-                <span class="pricing-row-value">450 &euro;</span>
+                <div class="pricing-row-main">
+                    <div class="pricing-row-label">Testovanie, fine-tuning &amp; nasadenie</div>
+                    <div class="pricing-row-desc">Draft režim, optimalizácia na reálnych dátach, monitoring dashboard, zaškolenie</div>
+                </div>
+                <div class="pricing-row-value">450 €</div>
             </div>
             <div class="pricing-row pricing-total">
-                <span class="pricing-row-label">Celkom bez DPH</span>
-                <span class="pricing-row-value">2 800 &euro;</span>
-            </div>
-        </div>
-
-        <div class="payment-grid">
-            <div class="payment-item">
-                <div class="payment-item-label">Zalohova faktura</div>
-                <div class="payment-item-value">1 400 &euro;</div>
-                <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">50 % pri podpise</div>
-            </div>
-            <div class="payment-item">
-                <div class="payment-item-label">Doplatok</div>
-                <div class="payment-item-value">1 400 &euro;</div>
-                <div style="font-size:12px; color:var(--text-secondary); margin-top:4px;">50 % pri odovzdani</div>
-            </div>
-            <div class="payment-item">
-                <div class="payment-item-label">Splatnost faktury</div>
-                <div class="payment-item-value">14 dni</div>
+                <div class="pricing-row-label">Celkom bez DPH</div>
+                <div class="pricing-row-value">2 800 €</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ════════ BENEFITS ════════ -->
+<!-- ════════ SECTION 07 — PRÍNOS ════════ -->
 <section class="benefits">
     <div class="container">
-        <div class="section-label">Prinosy</div>
-        <h2 class="section-title">Pred vs. Po implementacii</h2>
-        <p class="section-desc"></p>
+        <div class="section-num">07 · OČAKÁVANÝ PRÍNOS</div>
+        <h2 class="section-title">Návratnosť investície</h2>
+        <p class="benefits-intro">Porovnanie súčasného stavu s očakávaným stavom po nasadení AI agenta. Výpočet je založený na priemernom objeme 65 emailov denne a priemernom čase spracovania 5 minút na email.</p>
 
         <div class="comparison">
             <div class="compare-card compare-before">
                 <h3>Teraz</h3>
                 <div class="compare-row">
-                    <span class="compare-label">Manualne spracovanie</span>
-                    <span class="compare-value">100 %</span>
+                    <span class="compare-label">Manuálne spracované</span>
+                    <span class="compare-value">100 % emailov</span>
                 </div>
                 <div class="compare-row">
-                    <span class="compare-label">Cas operatora denne</span>
-                    <span class="compare-value">~5,5 hod</span>
+                    <span class="compare-label">Čas operátorov denne</span>
+                    <span class="compare-value">~5,5 hodiny</span>
                 </div>
                 <div class="compare-row">
-                    <span class="compare-label">Cas odpovede</span>
-                    <span class="compare-value">2–6 hodin</span>
+                    <span class="compare-label">Priemerná doba odpovede</span>
+                    <span class="compare-value">2–6 hodín</span>
                 </div>
                 <div class="compare-row">
-                    <span class="compare-label">Pocet operatorov</span>
-                    <span class="compare-value">2–3</span>
+                    <span class="compare-label">Operátorov na emaily</span>
+                    <span class="compare-value">2–3 osoby</span>
                 </div>
             </div>
             <div class="compare-arrow">→</div>
             <div class="compare-card compare-after">
-                <h3>S AI Agentom</h3>
+                <h3>Po nasadení AI</h3>
                 <div class="compare-row">
-                    <span class="compare-label">Manualne spracovanie</span>
-                    <span class="compare-value">~20 %</span>
+                    <span class="compare-label">Manuálne spracované</span>
+                    <span class="compare-value">~20 % emailov</span>
                 </div>
                 <div class="compare-row">
-                    <span class="compare-label">Cas operatora denne</span>
-                    <span class="compare-value">~1 hod</span>
+                    <span class="compare-label">Čas operátorov denne</span>
+                    <span class="compare-value">~1 hodina</span>
                 </div>
                 <div class="compare-row">
-                    <span class="compare-label">Cas odpovede</span>
-                    <span class="compare-value">pod 5 min</span>
+                    <span class="compare-label">Priemerná doba odpovede</span>
+                    <span class="compare-value">Pod 5 minút</span>
                 </div>
                 <div class="compare-row">
-                    <span class="compare-label">Pocet operatorov</span>
-                    <span class="compare-value">1 (monitoring)</span>
+                    <span class="compare-label">Operátorov na emaily</span>
+                    <span class="compare-value">1 osoba (monitoring)</span>
                 </div>
             </div>
         </div>
 
         <div class="savings-banner">
-            <div class="savings-text">Mesacna uspora casu operatorov</div>
+            <div class="savings-text"><strong>Odhadovaná úspora</strong> pracovného času operátorov po plnom nasadení AI agenta.</div>
             <div>
-                <div class="savings-number">~90 hod</div>
-                <div class="savings-unit">mesacne</div>
+                <div class="savings-number">~90 hodín</div>
+                <div class="savings-unit">mesačne</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ════════ REQUIREMENTS ════════ -->
+<!-- ════════ SECTION 08 — PODMIENKY ════════ -->
 <section class="requirements">
     <div class="container">
-        <div class="section-label">Poziadavky</div>
-        <h2 class="section-title">Co potrebujeme od vas</h2>
-        <p class="section-desc"></p>
+        <div class="section-num">08 · PODMIENKY A PREVÁDZKOVÉ NÁKLADY</div>
+        <h2 class="section-title">Čo je potrebné z vašej strany</h2>
 
         <div class="req-grid">
             <div class="req-box">
-                <h3>Podklady na zacatie</h3>
+                <h3>Podklady pre štart</h3>
                 <ul>
-                    <li>Pristup k emailovemu uctu (IMAP/SMTP)</li>
-                    <li>Money S5 API credentials (Client ID/Secret)</li>
-                    <li>Materialy pre knowledge base (FAQ, podmienky, postupy)</li>
-                    <li>Urceny operator na feedback pocas testovania</li>
+                    <li><strong>Prístup k emailovej schránke</strong> — IMAP/SMTP credentials pre schránku, ktorú dnes vyberáte cez Thunderbird</li>
+                    <li><strong>Money S5 API prístup</strong> — Client ID a Client Secret z Administrácia → Výmena dát → REST API</li>
+                    <li><strong>Knowledge base podklady</strong> — FAQ, obchodné podmienky, reklamačný poriadok, dodacie podmienky</li>
+                    <li><strong>Kontaktná osoba</strong> — operátor/-ka pre spätnú väzbu počas testovacej fázy</li>
                 </ul>
             </div>
             <div class="req-box">
-                <h3>Mesacne prevadzkove naklady</h3>
-                <div class="op-cost-row">
-                    <span>AI model (API usage)</span>
-                    <span>30–80 &euro;</span>
-                </div>
-                <div class="op-cost-row">
-                    <span>Hosting infrastruktury</span>
-                    <span>~20 &euro;</span>
-                </div>
-                <div class="op-cost-row">
-                    <span><strong>Celkom / mesiac</strong></span>
-                    <span><strong>50–100 &euro;</strong></span>
-                </div>
+                <h3>Prevádzkové náklady (mesačne)</h3>
+                <p>Po nasadení vznikajú mesačné náklady za AI model (API volania) — orientačne <strong>30–80 €</strong> mesačne v závislosti od objemu emailov. Hosting infraštruktúry <strong>~20 €</strong> mesačne.</p>
+                <p style="font-size:15px; color:var(--dark-blue); font-weight:600; margin-top:8px;">Celkovo odhadujeme <span style="color:var(--light-blue);">50–100 € / mesiac</span> prevádzkových nákladov.</p>
             </div>
+        </div>
+
+        <div class="payment-block">
+            <h3>Platobné podmienky</h3>
+            <p><strong>50 % pri podpise zmluvy</strong> (1 400 €), <strong>50 % po odovzdaní a nasadení</strong> (1 400 €). Splatnosť faktúr 14 dní. Ponuka je platná 30 dní od dátumu vystavenia.</p>
         </div>
     </div>
 </section>
@@ -1173,18 +1225,17 @@
 <!-- ════════ CTA ════════ -->
 <section class="cta">
     <div class="container">
-        <h2>Posunte zakaznicky servis<br>na dalsiu uroven</h2>
-        <p>Sme pripraveni prebrat technicke detaily a zodpovedat vsetky otazky.</p>
-        <a href="mailto:matejastary@gmail.com" class="cta-button">Dohodnut stretnutie</a>
-        <div class="cta-contact">matejastary@gmail.com</div>
+        <h2>Posuňme váš zákaznícky servis<br>na novú úroveň</h2>
+        <p>Radi vám pripravíme detailný technický návrh a zodpovieme akékoľvek otázky.</p>
+        <a href="mailto:matejastary@gmail.com" class="cta-button">Dohodnúť stretnutie →</a>
     </div>
 </section>
 
 <!-- ════════ FOOTER ════════ -->
 <footer class="footer">
     <div class="container">
-        <div class="footer-brand">dexfinity <span style="color: var(--light-blue);">·</span> go beyond</div>
-        <div class="footer-text">&copy; 2026 Dexfinity s.r.o. Vsetky prava vyhradene.</div>
+        <div class="footer-brand">DEXFINITY <span>/</span> CREAI DIVISION · <a href="mailto:matejastary@gmail.com" style="color:rgba(255,255,255,0.7); text-decoration:none;">matejastary@gmail.com</a></div>
+        <div class="footer-text">© 2026 Dexfinity s.r.o.</div>
     </div>
 </footer>
 
